@@ -1,3 +1,5 @@
+local vim = vim
+
 vim.cmd('packadd packer.nvim')
 local packer = require'packer'
 local util = require'packer.util'
