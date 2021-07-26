@@ -33,6 +33,7 @@ packer.startup(function()
     requires = {'ryanoasis/vim-devicons', opt = true}
   }
   use 'tpope/vim-fugitive'
+  use 'mhartington/formatter.nvim'
   end
 )
 
@@ -106,3 +107,50 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
+--- Setup formatter
+require'formatter'.setup({
+  logging = true,
+  filetype = {
+    javascript = {
+      -- prettier
+      function()
+        return {
+          exe = 'prettier',
+          args = {'--stdin-filepath', vim.api.nvim_buf_get_name(0)},
+          stdin = true,
+          cwd = vim.fn.expand('%:p:h')
+        }
+      end
+    },
+    javascriptreact = {
+      -- prettier
+      function()
+        return {
+          exe = 'prettier',
+          args = {'--stdin-filepath', vim.api.nvim_buf_get_name(0)},
+          stdin = true,
+          cwd = vim.fn.expand('%:p:h')
+        }
+      end
+    },
+    ruby = {
+      -- rubocop
+      function()
+        return {
+          exe = "rubocop", -- might prepend `bundle exec `
+          args = { '--auto-correct', '--stdin', '%:p', '2>/dev/null', '|', "awk 'f; /^====================$/{f=1}'"},
+          stdin = true,
+          cwd = vim.fn.expand('%:p:h')
+        }
+      end
+    }
+  }
+})
+
+-- Auto-format on write
+vim.api.nvim_exec([[
+augroup FormatAutogroup
+  autocmd!
+  autocmd BufWritePost *.js,*.jsx,*.rb FormatWrite
+augroup END
+]], true)

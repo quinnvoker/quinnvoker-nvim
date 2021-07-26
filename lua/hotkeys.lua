@@ -44,3 +44,6 @@ qkeymap('n', 'K', ':lua vim.lsp.buf.hover()<CR>')
 qkeymap('n', '<c-k>', ':lua vim.lsp.buf.signature_help()<CR>')
 qkeymap('n', '<leader>af', ':lua vim.lsp.buf.code_action()<CR>')
 qkeymap('n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
+
+--- Formatter
+qkeymap('n', '<leader>FF', ':Format<CR>')
