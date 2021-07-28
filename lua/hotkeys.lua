@@ -29,7 +29,7 @@ qkeymap('', '<leader>fh', ':Telescope help_tags<cr>')
 
 -- compe
 qkeymap('i', '<C-Space>', 'compe#complete()', expr_opts)
-qkeymap('i', '<CR>', 'compe#confirm("<CR>")', expr_opts)
+-- qkeymap('i', '<CR>', 'compe#confirm("<CR>")', expr_opts) -- disabled for compatibility with nvim-autopairs
 qkeymap('i', '<C-e>', 'compe#close("<C-e>")', expr_opts)
 
 -- LSP

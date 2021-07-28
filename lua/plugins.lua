@@ -34,8 +34,20 @@ packer.startup(function()
   }
   use 'tpope/vim-fugitive'
   use 'mhartington/formatter.nvim'
+  use 'windwp/nvim-autopairs'
   end
 )
+
+-- autopair config
+local npairs = require'nvim-autopairs'
+local Rule = require'nvim-autopairs.rule'
+npairs.setup({
+  check_ts = true,
+  ts_config = {
+    lua = {'string'},
+    javascript = {'template_string'}
+  }
+})
 
 -- Treesitter config
 local ts_config = require'nvim-treesitter.configs'
@@ -43,8 +55,18 @@ ts_config.setup {
   ensure_installed = 'maintained',
   highlight = {
     enable = true,
-  }
+  },
+  autopairs = {enable = true}
 }
+
+-- autopair+Treesitter config
+local ts_conds = require'nvim-autopairs.ts-conds'
+npairs.add_rules({
+  Rule("%", "%", "lua")
+    :with_pair(ts_conds.is_ts_node({'string','comment'})),
+  Rule("$", "$", "lua")
+    :with_pair(ts_conds.is_not_ts_node({'function'}))
+})
 
 -- Compe setup
 require'compe'.setup {
@@ -80,6 +102,12 @@ require'compe'.setup {
     luasnip = false;
   };
 }
+
+-- autopairs+compe config
+require'nvim-autopairs.completion.compe'.setup({
+  map_cr = true,
+  map_complete = true
+})
 
 -- LSP setup
 local function setup_servers()

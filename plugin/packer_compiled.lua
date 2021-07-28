@@ -90,6 +90,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/quinn/.local/share/nvim/site/pack/packer/start/nerdtree-git-plugin"
   },
+  ["nvim-autopairs"] = {
+    loaded = true,
+    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
+  },
   ["nvim-compe"] = {
     loaded = true,
     path = "/home/quinn/.local/share/nvim/site/pack/packer/start/nvim-compe"
