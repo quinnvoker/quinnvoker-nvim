@@ -9,10 +9,14 @@ packer.init({
 --- startup and add configure plugins
 packer.startup(function()
   local use = use
+  -- package manager
   use 'wbthomason/packer.nvim'
+  -- color theme
   use 'sainnhe/sonokai'
+  -- file navigation
   use 'preservim/nerdtree'
   use 'xuyuanp/nerdtree-git-plugin'
+  -- project-wide search
   use {
     'nvim-telescope/telescope.nvim',
     requires = {
@@ -20,19 +24,25 @@ packer.startup(function()
       {'nvim-lua/plenary.nvim'}
     }
   }
+  -- LSP and general syntax highlighting
   use 'nvim-treesitter/nvim-treesitter'
   use 'neovim/nvim-lspconfig'
   use 'kabouzeid/nvim-lspinstall'
+  -- autocompletion
   use 'hrsh7th/nvim-compe'
+  -- allow vim and plugins to use text-based icons
   use 'ryanoasis/vim-devicons'
   use 'vwxyutarooo/nerdtree-devicons-syntax'
+  -- status bar
   use {
     'glepnir/galaxyline.nvim',
     branch = 'main',
     config = function() require'galaxyline/spaceline' end,
     requires = {'ryanoasis/vim-devicons', opt = true}
   }
+  -- git management
   use 'tpope/vim-fugitive'
+  -- autoformtting and code stylers
   use 'mhartington/formatter.nvim'
   use 'windwp/nvim-autopairs'
   end
