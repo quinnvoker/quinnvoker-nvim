@@ -28,6 +28,8 @@ packer.startup(function()
   use 'nvim-treesitter/nvim-treesitter'
   use 'neovim/nvim-lspconfig'
   use 'kabouzeid/nvim-lspinstall'
+  -- language-specific syntax highlighting
+  use 'slim-template/vim-slim'
   -- autocompletion
   use 'hrsh7th/nvim-compe'
   -- allow vim and plugins to use text-based icons

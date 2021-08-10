@@ -137,6 +137,10 @@ _G.packer_plugins = {
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/quinn/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+  },
+  ["vim-slim"] = {
+    loaded = true,
+    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/vim-slim"
   }
 }
 
