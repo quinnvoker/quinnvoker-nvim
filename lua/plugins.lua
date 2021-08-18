@@ -44,9 +44,12 @@ packer.startup(function()
   }
   -- git management
   use 'tpope/vim-fugitive'
-  -- autoformtting and code stylers
+  -- autoformatting and code stylers
   use 'mhartington/formatter.nvim'
   use 'windwp/nvim-autopairs'
+  -- snippets
+  use 'sirver/ultisnips'
+  use 'honza/vim-snippets'
   end
 )
 
@@ -110,7 +113,7 @@ require'compe'.setup {
     nvim_lsp = true;
     nvim_lua = true;
     vsnip = false;
-    ultisnips = false;
+    ultisnips = true;
     luasnip = false;
   };
 }
