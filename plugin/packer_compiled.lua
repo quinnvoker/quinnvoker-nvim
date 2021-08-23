@@ -44,8 +44,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/quinn/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/quinn/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/quinn/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/quinn/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/quinn/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/root/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/root/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/root/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/root/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/root/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -71,76 +71,76 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["formatter.nvim"] = {
     loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/formatter.nvim"
+    path = "/root/.local/share/nvim/site/pack/packer/start/formatter.nvim"
   },
   ["galaxyline.nvim"] = {
     config = { "\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25galaxyline/spaceline\frequire\0" },
     loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
+    path = "/root/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
   },
   nerdtree = {
     loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/nerdtree"
+    path = "/root/.local/share/nvim/site/pack/packer/start/nerdtree"
   },
   ["nerdtree-devicons-syntax"] = {
     loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/nerdtree-devicons-syntax"
+    path = "/root/.local/share/nvim/site/pack/packer/start/nerdtree-devicons-syntax"
   },
   ["nerdtree-git-plugin"] = {
     loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/nerdtree-git-plugin"
+    path = "/root/.local/share/nvim/site/pack/packer/start/nerdtree-git-plugin"
   },
   ["nvim-autopairs"] = {
     loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
+    path = "/root/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
   },
   ["nvim-compe"] = {
     loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/nvim-compe"
+    path = "/root/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+    path = "/root/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
   ["nvim-lspinstall"] = {
     loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
+    path = "/root/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+    path = "/root/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    path = "/root/.local/share/nvim/site/pack/packer/start/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+    path = "/root/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
   ["popup.nvim"] = {
     loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/popup.nvim"
+    path = "/root/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
   sonokai = {
     loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/sonokai"
+    path = "/root/.local/share/nvim/site/pack/packer/start/sonokai"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+    path = "/root/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
   ["vim-devicons"] = {
     loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/vim-devicons"
+    path = "/root/.local/share/nvim/site/pack/packer/start/vim-devicons"
   },
   ["vim-fugitive"] = {
     loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+    path = "/root/.local/share/nvim/site/pack/packer/start/vim-fugitive"
   },
   ["vim-slim"] = {
     loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/vim-slim"
+    path = "/root/.local/share/nvim/site/pack/packer/start/vim-slim"
   }
 }
 
