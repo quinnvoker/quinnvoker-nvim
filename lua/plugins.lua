@@ -51,7 +51,7 @@ packer.startup(function()
   use {
     'glepnir/galaxyline.nvim',
     branch = 'main',
-    config = function() require'galaxyline/spaceline' end,
+    config = function() require'galaxyline/quline' end,
     requires = {'ryanoasis/vim-devicons', opt = true}
   }
   -- git management
