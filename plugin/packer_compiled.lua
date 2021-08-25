@@ -78,6 +78,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/quinn/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
   },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
+  },
   nerdtree = {
     loaded = true,
     path = "/home/quinn/.local/share/nvim/site/pack/packer/start/nerdtree"

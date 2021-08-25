@@ -56,6 +56,10 @@ packer.startup(function()
   }
   -- git management
   use 'tpope/vim-fugitive'
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {'nvim-lua/plenary.nvim'}
+  }
   -- autoformatting and code stylers
   use 'mhartington/formatter.nvim'
   use 'windwp/nvim-autopairs'
@@ -161,6 +165,9 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = true,
   }
 )
+
+--- Setup gitsigns
+require'gitsigns'.setup()
 
 --- Setup formatter
 require'formatter'.setup({
