@@ -100,15 +100,24 @@ gl.section.left[4] = {
 }
 
 gl.section.left[5] = {
-  Hints = {
-    icon = '  ',
-    provider = 'DiagnosticHint',
-    highlight = {colors.white, colors.bg},
+  Info = {
+    icon = '  ',
+    provider = 'DiagnosticInfo',
+    highlight = {colors.teal, colors.bg},
     condition = condition.hide_in_width
   }
 }
 
 gl.section.left[6] = {
+  Hints = {
+    icon = '  ',
+    provider = 'DiagnosticHint',
+    highlight = {colors.blue, colors.bg},
+    condition = condition.hide_in_width
+  }
+}
+
+gl.section.left[7] = {
   Warnings = {
     icon = '  ',
     provider = 'DiagnosticWarn',
@@ -117,7 +126,7 @@ gl.section.left[6] = {
   }
 }
 
-gl.section.left[7] = {
+gl.section.left[8] = {
   Errors = {
     icon = '  ',
     provider = 'DiagnosticError',
@@ -126,8 +135,9 @@ gl.section.left[7] = {
   }
 }
 
-gl.section.left[8] = {
+gl.section.left[9] = {
   FileType = {
+    icon = '  ',
     highlight = {colors.gray, colors.bg},
     provider = function()
       local buf = require('galaxyline.provider_buffer')
@@ -150,7 +160,7 @@ gl.section.left[8] = {
 
 gl.section.right[1] = {
   DiffAdd = {
-    icon = '  ',
+    icon = '  ',
     provider = 'DiffAdd',
     condition = condition.hide_in_width,
     highlight = {colors.green, colors.bg},
@@ -159,16 +169,16 @@ gl.section.right[1] = {
 
 gl.section.right[2] = {
   DiffModified = {
-    icon = '  ',
+    icon = '  ',
     provider = 'DiffModified',
     condition = condition.hide_in_width,
-    highlight = {colors.teal, colors.bg},
+    highlight = {colors.yellow, colors.bg},
   }
 }
 
 gl.section.right[3] = {
   DiffRemove = {
-    icon = '  ',
+    icon = '  ',
     provider = 'DiffRemove',
     condition = condition.hide_in_width,
     highlight = {colors.red, colors.bg},
@@ -177,8 +187,9 @@ gl.section.right[3] = {
 
 gl.section.right[4] = {
   GitBranch = {
-    icon = ' ',
-    separator = '  ',
+    icon = '  ',
+    separator = ' ',
+    separator_highlight = {colors.bg, colors.bg},
     condition = condition.check_git_workspace,
     highlight = {colors.teal, colors.bg},
     provider = 'GitBranch',
