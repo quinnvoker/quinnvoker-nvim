@@ -1,7 +1,7 @@
 -- made using superhawk610's config as a base - q
 
-local gl = require('galaxyline')
-local condition = require('galaxyline.condition')
+local gl = require'galaxyline'
+local condition = require'galaxyline.condition'
 
 -- onedark
 local colors = {
@@ -95,47 +95,46 @@ gl.section.left[4] = {
     condition = condition.buffer_not_empty,
     highlight = {colors.gray, colors.bg_dim},
     separator_highlight = {colors.bg_dim, colors.bg},
-    separator = '  ',
+    separator = ' ',
   }
 }
 
 gl.section.left[5] = {
-  DiffAdd = {
-    icon = '  ',
-    provider = 'DiffAdd',
-    condition = condition.hide_in_width,
+  Hints = {
+    icon = '  ',
+    provider = 'DiagnosticHint',
     highlight = {colors.white, colors.bg},
+    condition = condition.hide_in_width
   }
 }
 
 gl.section.left[6] = {
-  DiffModified = {
-    icon = '  ',
-    provider = 'DiffModified',
-    condition = condition.hide_in_width,
-    highlight = {colors.gray, colors.bg},
+  Warnings = {
+    icon = '  ',
+    provider = 'DiagnosticWarn',
+    highlight = {colors.yellow, colors.bg},
+    condition = condition.hide_in_width
   }
 }
 
 gl.section.left[7] = {
-  DiffRemove = {
-    icon = '  ',
-    provider = 'DiffRemove',
-    condition = condition.hide_in_width,
-    highlight = {colors.gray, colors.bg},
+  Errors = {
+    icon = '  ',
+    provider = 'DiagnosticError',
+    highlight = {colors.red, colors.bg},
+    condition = condition.hide_in_width
   }
 }
 
--- gl.section.left[8] = {
---   CocStatus = {
---     highlight = {colors.gray, colors.bg},
---     provider = function()
---       return vim.fn['coc#status']()
---         :gsub('\u{274c}', '\u{f06a}')         -- 
---         :gsub('\u{26a0}\u{fe0f}', '\u{f071}') -- 
---     end
---   }
--- }
+gl.section.left[8] = {
+  FileType = {
+    highlight = {colors.gray, colors.bg},
+    provider = function()
+      local buf = require('galaxyline.provider_buffer')
+      return string.lower(buf.get_buffer_filetype())
+    end,
+  }
+}
 
 -- gl.section.left[9] = {
 --   CocFunction = {
@@ -150,16 +149,33 @@ gl.section.left[7] = {
 -- }
 
 gl.section.right[1] = {
-  FileType = {
-    highlight = {colors.gray, colors.bg},
-    provider = function()
-      local buf = require('galaxyline.provider_buffer')
-      return string.lower(buf.get_buffer_filetype())
-    end,
+  DiffAdd = {
+    icon = '  ',
+    provider = 'DiffAdd',
+    condition = condition.hide_in_width,
+    highlight = {colors.green, colors.bg},
   }
 }
 
 gl.section.right[2] = {
+  DiffModified = {
+    icon = '  ',
+    provider = 'DiffModified',
+    condition = condition.hide_in_width,
+    highlight = {colors.teal, colors.bg},
+  }
+}
+
+gl.section.right[3] = {
+  DiffRemove = {
+    icon = '  ',
+    provider = 'DiffRemove',
+    condition = condition.hide_in_width,
+    highlight = {colors.red, colors.bg},
+  }
+}
+
+gl.section.right[4] = {
   GitBranch = {
     icon = ' ',
     separator = '  ',
@@ -169,7 +185,7 @@ gl.section.right[2] = {
   }
 }
 
-gl.section.right[3] = {
+gl.section.right[5] = {
   FileLocation = {
     icon = ' ',
     separator = ' ',
@@ -193,7 +209,7 @@ gl.section.right[3] = {
 
 vim.api.nvim_command('hi GalaxyViModeReverse guibg=' .. colors.bg_dim)
 
-gl.section.right[4] = {
+gl.section.right[6] = {
   ViMode = {
     icon = ' ',
     separator = ' ',
