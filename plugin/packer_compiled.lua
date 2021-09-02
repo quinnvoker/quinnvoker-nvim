@@ -82,6 +82,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/quinn/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
   },
+  ["lsp-status.nvim"] = {
+    loaded = true,
+    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/lsp-status.nvim"
+  },
   nerdtree = {
     loaded = true,
     path = "/home/quinn/.local/share/nvim/site/pack/packer/start/nerdtree"
