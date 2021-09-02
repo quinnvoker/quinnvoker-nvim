@@ -100,6 +100,13 @@ gl.section.left[4] = {
 }
 
 gl.section.left[5] = {
+  Position = {
+    provider = 'LineColumn',
+    highlight = {colors.gray, colors.bg},
+  }
+}
+
+gl.section.left[6] = {
   Info = {
     icon = '  ',
     provider = 'DiagnosticInfo',
@@ -108,7 +115,7 @@ gl.section.left[5] = {
   }
 }
 
-gl.section.left[6] = {
+gl.section.left[7] = {
   Hints = {
     icon = '  ',
     provider = 'DiagnosticHint',
@@ -117,7 +124,7 @@ gl.section.left[6] = {
   }
 }
 
-gl.section.left[7] = {
+gl.section.left[8] = {
   Warnings = {
     icon = '  ',
     provider = 'DiagnosticWarn',
@@ -126,7 +133,7 @@ gl.section.left[7] = {
   }
 }
 
-gl.section.left[8] = {
+gl.section.left[9] = {
   Errors = {
     icon = '  ',
     provider = 'DiagnosticError',
@@ -135,7 +142,7 @@ gl.section.left[8] = {
   }
 }
 
-gl.section.left[9] = {
+gl.section.left[10] = {
   FileType = {
     icon = '  ',
     highlight = {colors.gray, colors.bg},
