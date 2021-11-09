@@ -40,7 +40,6 @@ packer.startup(function()
   use 'nvim-treesitter/nvim-treesitter'
   use 'neovim/nvim-lspconfig'
   use 'kabouzeid/nvim-lspinstall'
-  use 'nvim-lua/lsp-status.nvim'
   -- language-specific syntax highlighting
   use 'slim-template/vim-slim'
   -- autocompletion
