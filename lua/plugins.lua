@@ -39,7 +39,7 @@ packer.startup(function()
   -- LSP and general syntax highlighting
   use 'nvim-treesitter/nvim-treesitter'
   use 'neovim/nvim-lspconfig'
-  use 'kabouzeid/nvim-lspinstall'
+  use 'williamboman/nvim-lsp-installer'
   -- language-specific syntax highlighting
   use 'slim-template/vim-slim'
   -- autocompletion
@@ -141,19 +141,43 @@ require'nvim-autopairs.completion.compe'.setup({
 })
 
 -- LSP setup
-local function setup_servers()
-  require'lspinstall'.setup()
-  local servers = require'lspinstall'.installed_servers()
-  for _, server in pairs(servers) do
-    require'lspconfig'[server].setup{}
-  end
-end
-setup_servers()
+local lsp_installer = require("nvim-lsp-installer")
 
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require'lspinstall'.post_install_hook = function ()
-  setup_servers() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+-- Register a handler that will be called for all installed servers.
+-- Alternatively, you may also register handlers on specific server instances instead (see example below).
+lsp_installer.on_server_ready(function(server)
+    local opts = {}
+
+    -- (optional) Customize the options passed to the server
+    -- if server.name == "tsserver" then
+    --     opts.root_dir = function() ... end
+    -- end
+
+    -- This setup() function is exactly the same as lspconfig's setup function.
+    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+    server:setup(opts)
+end)
+
+-- Include the servers you want to have installed by default below
+local servers = {
+  "bash",
+  "css",
+  "html",
+  "jsonls",
+  "tsserver",
+  "sumneko_lua",
+  "pyright",
+  "yamlls",
+}
+
+for _, name in pairs(servers) do
+  local server_is_found, server = lsp_installer.get_server(name)
+  if server_is_found then
+    if not server:is_installed() then
+      print("Installing " .. name)
+      server:install()
+    end
+  end
 end
 
 -- Setup LSP diagnostics
