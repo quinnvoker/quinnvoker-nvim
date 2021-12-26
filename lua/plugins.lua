@@ -75,6 +75,7 @@ packer.startup(function()
   -- autoformatting and code stylers
   use 'mhartington/formatter.nvim'
   use 'windwp/nvim-autopairs'
+  use 'windwp/nvim-ts-autotag'
   end
 )
 _G.MUtils = {}
@@ -109,7 +110,8 @@ ts_config.setup {
   highlight = {
     enable = true,
   },
-  autopairs = {enable = true}
+  autopairs = {enable = true},
+  autotag = {enable = true}
 }
 
 -- LSP setup
