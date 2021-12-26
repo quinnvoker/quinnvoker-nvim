@@ -43,7 +43,19 @@ packer.startup(function()
   -- language-specific syntax highlighting
   use 'slim-template/vim-slim'
   -- autocompletion
-  use 'hrsh7th/nvim-compe'
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      {'hrsh7th/cmp-nvim-lsp'},
+      {'hrsh7th/cmp-buffer'},
+      {'hrsh7th/cmp-path'},
+      {'hrsh7th/cmp-cmdline'},
+      --snippets
+      {'sirver/ultisnips'},
+      {'quangnguyen30192/cmp-nvim-ultisnips'},
+      {'honza/vim-snippets'}
+    }
+  }
   -- allow vim and plugins to use text-based icons
   use 'ryanoasis/vim-devicons'
   use 'vwxyutarooo/nerdtree-devicons-syntax'
@@ -63,22 +75,32 @@ packer.startup(function()
   -- autoformatting and code stylers
   use 'mhartington/formatter.nvim'
   use 'windwp/nvim-autopairs'
-  -- snippets
-  use 'sirver/ultisnips'
-  use 'honza/vim-snippets'
   end
 )
+_G.MUtils = {}
 
 -- autopair config
 local npairs = require'nvim-autopairs'
 local Rule = require'nvim-autopairs.rule'
+local ts_conds = require'nvim-autopairs.ts-conds'
 npairs.setup({
   check_ts = true,
   ts_config = {
     lua = {'string'},
     javascript = {'template_string'}
-  }
+  },
+  disable_filetype = { "TelescopePrompt" , "vim" },
 })
+npairs.add_rules({
+  Rule("%", "%", "lua")
+    :with_pair(ts_conds.is_ts_node({'string','comment'})),
+  Rule("$", "$", "lua")
+    :with_pair(ts_conds.is_not_ts_node({'function'}))
+})
+
+MUtils.completion_confirm=function()
+  return npairs.autopairs_cr()
+end
 
 -- Treesitter config
 local ts_config = require'nvim-treesitter.configs'
@@ -89,56 +111,6 @@ ts_config.setup {
   },
   autopairs = {enable = true}
 }
-
--- autopair+Treesitter config
-local ts_conds = require'nvim-autopairs.ts-conds'
-npairs.add_rules({
-  Rule("%", "%", "lua")
-    :with_pair(ts_conds.is_ts_node({'string','comment'})),
-  Rule("$", "$", "lua")
-    :with_pair(ts_conds.is_not_ts_node({'function'}))
-})
-
--- Compe setup
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  resolve_timeout = 800;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = {
-    border = { '', '' ,'', ' ', '', '', '', ' ' }, -- the border option is the same as `|help nvim_open_win|`
-    winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
-    max_width = 120,
-    min_width = 60,
-    max_height = math.floor(vim.o.lines * 0.3),
-    min_height = 1,
-  };
-
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    vsnip = false;
-    ultisnips = true;
-    luasnip = false;
-  };
-}
-
--- autopairs+compe config
-require'nvim-autopairs.completion.compe'.setup({
-  map_cr = true,
-  map_complete = true
-})
 
 -- LSP setup
 local lsp_installer = require("nvim-lsp-installer")
@@ -178,6 +150,70 @@ for _, name in pairs(servers) do
       server:install()
     end
   end
+end
+
+-- Setup nvim-cmp.
+local cmp = require'cmp'
+
+cmp.setup({
+  snippet = {
+    -- REQUIRED - you must specify a snippet engine
+    expand = function(args)
+      -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+      vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+    end,
+  },
+  mapping = {
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
+    -- ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<CR>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    })
+  },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    -- { name = 'vsnip' }, -- For vsnip users.
+    -- { name = 'luasnip' }, -- For luasnip users.
+    { name = 'ultisnips' }, -- For ultisnips users.
+    -- { name = 'snippy' }, -- For snippy users.
+  }, {
+    { name = 'buffer' },
+  })
+})
+
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
+
+-- Setup lspconfig.
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+for _,name in pairs(require'nvim-lsp-installer.servers'.get_installed_server_names()) do
+  require('lspconfig')[name].setup {
+    capabilities = capabilities
+  }
 end
 
 -- Setup LSP diagnostics

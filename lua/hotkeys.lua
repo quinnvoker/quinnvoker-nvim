@@ -27,10 +27,8 @@ qkeymap('', '<leader>fg', ':Telescope live_grep<cr>')
 qkeymap('', '<leader>fb', ':Telescope buffers<cr>')
 qkeymap('', '<leader>fh', ':Telescope help_tags<cr>')
 
--- compe
-qkeymap('i', '<C-Space>', 'compe#complete()', expr_opts)
-qkeymap('i', '<C-CR>', 'compe#confirm({"keys": "<C-CR>", "select": v:true})', expr_opts) -- accept first option with Ctrl+Return
-qkeymap('i', '<C-e>', 'compe#close("<C-e>")', expr_opts)
+-- cmp + autopairs
+qkeymap('i', '<CR>', 'v:lua.MUtils.completion_confirm()', expr_opts)
 
 -- LSP
 qkeymap('n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
