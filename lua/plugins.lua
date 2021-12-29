@@ -26,8 +26,13 @@ packer.startup(function()
   -- color theme
   use 'sainnhe/sonokai'
   -- file navigation
-  use 'preservim/nerdtree'
-  use 'xuyuanp/nerdtree-git-plugin'
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+    },
+    config = function() require'nvim-tree'.setup {} end
+  }
   -- project-wide search
   use {
     'nvim-telescope/telescope.nvim',
@@ -56,9 +61,6 @@ packer.startup(function()
       {'honza/vim-snippets'}
     }
   }
-  -- allow vim and plugins to use text-based icons
-  use 'ryanoasis/vim-devicons'
-  use 'vwxyutarooo/nerdtree-devicons-syntax'
   -- status bar
   use {
     'glepnir/galaxyline.nvim',

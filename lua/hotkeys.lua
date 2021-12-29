@@ -15,11 +15,11 @@ local expr_opts = {
   expr = true
 }
 
--- NERDTree
-qkeymap('', '<leader>n', ':NERDTreeFocus<cr>')
-qkeymap('', '<C-n>', ':NERDTree<cr>')
-qkeymap('', '<C-t>', ':NERDTreeToggle<cr>')
-qkeymap('', '<C-f>', ':NERDTreeFind<cr>')
+-- NvimTree
+qkeymap('', '<leader>n', ':NvimTreeFocus<cr>')
+qkeymap('', '<C-n>', ':NvimTreeToggle<cr>')
+qkeymap('', '<C-f>', ':NvimTreeFindFile<cr>')
+qkeymap('', '<leader>r', ':NvimTreeRefresh<cr>')
 
 -- Telescope
 qkeymap('', '<leader>ff', ':Telescope find_files<cr>')
