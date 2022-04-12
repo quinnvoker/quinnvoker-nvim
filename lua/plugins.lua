@@ -108,7 +108,7 @@ end
 -- Treesitter config
 local ts_config = require'nvim-treesitter.configs'
 ts_config.setup {
-  ensure_installed = 'maintained',
+  ensure_installed = 'all',
   highlight = {
     enable = true,
   },
