@@ -47,6 +47,12 @@ packer.startup(function()
   use 'williamboman/nvim-lsp-installer'
   -- language-specific syntax highlighting
   use 'slim-template/vim-slim'
+  use {
+    'salkin-mada/openscad.nvim',
+    config = function ()
+      require('openscad')
+    end
+  }
   -- autocompletion
   use {
     'hrsh7th/nvim-cmp',
