@@ -99,16 +99,16 @@ _G.packer_plugins = {
     path = "/home/vagrant/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
+  ["feline.nvim"] = {
+    config = { "\27LJ\2\2z\0\0\4\0\6\0\v6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0006\2\0\0'\3\3\0B\2\2\2=\2\5\1B\0\2\1K\0\1\0\15components\1\0\0(catppuccin.core.integrations.feline\nsetup\vfeline\frequire\0" },
+    loaded = true,
+    path = "/home/vagrant/.local/share/nvim/site/pack/packer/start/feline.nvim",
+    url = "https://github.com/feline-nvim/feline.nvim"
+  },
   ["formatter.nvim"] = {
     loaded = true,
     path = "/home/vagrant/.local/share/nvim/site/pack/packer/start/formatter.nvim",
     url = "https://github.com/mhartington/formatter.nvim"
-  },
-  ["galaxyline.nvim"] = {
-    config = { "\27LJ\2\0021\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\22galaxyline/quline\frequire\0" },
-    loaded = true,
-    path = "/home/vagrant/.local/share/nvim/site/pack/packer/start/galaxyline.nvim",
-    url = "https://github.com/glepnir/galaxyline.nvim"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
@@ -186,11 +186,6 @@ _G.packer_plugins = {
     path = "/home/vagrant/.local/share/nvim/site/pack/packer/start/ultisnips",
     url = "https://github.com/sirver/ultisnips"
   },
-  ["vim-devicons"] = {
-    loaded = true,
-    path = "/home/vagrant/.local/share/nvim/site/pack/packer/start/vim-devicons",
-    url = "https://github.com/ryanoasis/vim-devicons"
-  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/vagrant/.local/share/nvim/site/pack/packer/start/vim-fugitive",
@@ -209,10 +204,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: galaxyline.nvim
-time([[Config for galaxyline.nvim]], true)
-try_loadstring("\27LJ\2\0021\0\0\2\0\2\0\0046\0\0\0'\1\1\0B\0\2\1K\0\1\0\22galaxyline/quline\frequire\0", "config", "galaxyline.nvim")
-time([[Config for galaxyline.nvim]], false)
+-- Config for: feline.nvim
+time([[Config for feline.nvim]], true)
+try_loadstring("\27LJ\2\2z\0\0\4\0\6\0\v6\0\0\0'\1\1\0B\0\2\0029\0\2\0005\1\4\0006\2\0\0'\3\3\0B\2\2\2=\2\5\1B\0\2\1K\0\1\0\15components\1\0\0(catppuccin.core.integrations.feline\nsetup\vfeline\frequire\0", "config", "feline.nvim")
+time([[Config for feline.nvim]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 try_loadstring("\27LJ\2\2;\0\0\2\0\3\0\a6\0\0\0'\1\1\0B\0\2\0029\0\2\0004\1\0\0B\0\2\1K\0\1\0\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")

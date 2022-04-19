@@ -67,10 +67,10 @@ packer.startup(function()
   }
   -- status bar
   use {
-    'glepnir/galaxyline.nvim',
-    branch = 'main',
-    config = function() require'galaxyline/quline' end,
-    requires = {'ryanoasis/vim-devicons', opt = true}
+    'feline-nvim/feline.nvim',
+    config = function() require('feline').setup({
+      components = require('catppuccin.core.integrations.feline'),
+    }) end
   }
   -- git management
   use 'tpope/vim-fugitive'
