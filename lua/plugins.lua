@@ -25,6 +25,10 @@ packer.startup(function()
   use 'wbthomason/packer.nvim'
   -- color theme
   use 'sainnhe/sonokai'
+  use {
+    'catppuccin/nvim',
+    as = 'catppuccin'
+  }
   -- file navigation
   use {
     'kyazdani42/nvim-tree.lua',
