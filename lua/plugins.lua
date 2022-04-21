@@ -1,4 +1,4 @@
-local vim = vim
+local vim = require('vim')
 
 -- packer bootstrap
 local execute = vim.api.nvim_command
