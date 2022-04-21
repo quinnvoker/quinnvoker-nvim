@@ -36,6 +36,8 @@ packer.startup(function(use)
     },
     config = function() require'nvim-tree'.setup {} end
   }
+  -- window navigation
+  use { 'danilamihailov/beacon.nvim' }
   -- project-wide search
   use {
     'nvim-telescope/telescope.nvim',
