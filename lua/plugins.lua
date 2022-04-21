@@ -19,8 +19,7 @@ packer.init({
   package_root = util.join_paths(vim.fn.stdpath('data'), 'site', 'pack')
 })
 --- startup and add configure plugins
-packer.startup(function()
-  local use = use
+packer.startup(function(use)
   -- package manager
   use 'wbthomason/packer.nvim'
   -- color theme
@@ -68,9 +67,11 @@ packer.startup(function()
   -- status bar
   use {
     'feline-nvim/feline.nvim',
-    config = function() require('feline').setup({
-      components = require('catppuccin.core.integrations.feline'),
-    }) end
+    config = function()
+      require('feline').setup({
+        components = require('feline.qatppuccino')
+      })
+    end
   }
   -- git management
   use 'tpope/vim-fugitive'
