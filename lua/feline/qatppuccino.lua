@@ -1,4 +1,4 @@
-local vim = require('vim')
+local vim = require('../vim')
 local components = require('catppuccin.core.integrations.feline')
 
 --- Replace main icon
