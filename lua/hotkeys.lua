@@ -45,3 +45,6 @@ qkeymap('n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
 
 --- Formatter
 qkeymap('n', '<leader>FF', ':Format<CR>')
+
+--- Terminal
+qkeymap('t', '<Esc>', '<C-\\><C-n>')
