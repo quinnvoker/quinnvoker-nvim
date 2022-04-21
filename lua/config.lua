@@ -1,4 +1,4 @@
-local vim = vim
+local vim = require('vim')
 local o = vim.o
 local bo = vim.bo
 local wo = vim.wo
@@ -19,7 +19,7 @@ o.expandtab = true
 
 --- line number
 wo.number = true
-wo.relativenumber = true
+wo.relativenumber = false
 
 --- search settings
 o.ignorecase = true
