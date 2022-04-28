@@ -75,6 +75,10 @@ packer.startup(function(use)
       })
     end
   }
+  -- notifications
+  use {
+    'rcarriga/nvim-notify',
+  }
   -- git management
   use 'tpope/vim-fugitive'
   use {
@@ -283,3 +287,6 @@ augroup FormatAutogroup
   autocmd BufWritePost *.js,*.jsx,*.rb FormatWrite
 augroup END
 ]], true)
+
+-- override default notifications
+vim.notify = require('notify')
