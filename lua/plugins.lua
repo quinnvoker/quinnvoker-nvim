@@ -149,6 +149,7 @@ end)
 local servers = {
   "bash",
   "css",
+  "clangd",
   "html",
   "jsonls",
   "tsserver",
