@@ -2,6 +2,7 @@ local vim = require('vim')
 local o = vim.o
 local bo = vim.bo
 local wo = vim.wo
+local g = vim.g
 
 --- colors/highlight
 o.termguicolors = true
@@ -25,3 +26,5 @@ wo.relativenumber = false
 o.ignorecase = true
 o.smartcase = true
 
+-- input
+g.mapleader = ' '
