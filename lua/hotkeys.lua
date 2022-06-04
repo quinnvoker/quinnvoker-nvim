@@ -51,3 +51,22 @@ qkeymap('n', '<Leader>FF', ':Format<CR>')
 
 --- Terminal
 qkeymap('t', '<Esc>', '<C-\\><C-n>')
+
+-- Debugging
+qkeymap('n', '<leader>dh', function() require"dap".toggle_breakpoint() end)
+qkeymap('n', '<leader>dH', ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+qkeymap('n', '<A-i>', function() require"dap".step_out() end)
+qkeymap('n', "<A-e>", function() require"dap".step_into() end)
+qkeymap('n', '<A-n>', function() require"dap".step_over() end)
+qkeymap('n', '<A-h>', function() require"dap".continue() end)
+qkeymap('n', '<leader>dn', function() require"dap".run_to_cursor() end)
+qkeymap('n', '<leader>dc', function() require"dap".terminate() end)
+qkeymap('n', '<leader>dR', function() require"dap".clear_breakpoints() end)
+qkeymap('n', '<leader>de', function() require"dap".set_exception_breakpoints({"all"}) end)
+--qkeymap('n', '<leader>da', function() require"debugHelper".attach() end)
+--qkeymap('n', '<leader>dA', function() require"debugHelper".attachToRemote() end)
+qkeymap('n', '<leader>di', function() require"dap.ui.widgets".hover() end)
+qkeymap('n', '<leader>d?', function() local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes) end)
+qkeymap('n', '<leader>dk', ':lua require"dap".up()<CR>zz')
+qkeymap('n', '<leader>dj', ':lua require"dap".down()<CR>zz')
+qkeymap('n', '<leader>dr', ':lua require"dap".repl.toggle({}, "vsplit")<CR><C-w>l')
