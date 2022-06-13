@@ -86,7 +86,7 @@ packer.startup(function(use)
     requires = {'nvim-lua/plenary.nvim'}
   }
   -- autoformatting and code stylers
-  use 'mhartington/formatter.nvim'
+  use 'sbdchd/neoformat'
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
   -- debug
@@ -245,49 +245,11 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 --- Setup gitsigns
 require'gitsigns'.setup()
 
---- Setup formatter
-require'formatter'.setup({
-  logging = true,
-  filetype = {
-    javascript = {
-      -- prettier
-      function()
-        return {
-          exe = './node_modules/.bin/prettier',
-          args = {'--stdin-filepath', vim.api.nvim_buf_get_name(0)},
-          stdin = true,
-        }
-      end
-    },
-    javascriptreact = {
-      -- prettier
-      function()
-        return {
-          exe = './node_modules/.bin/prettier',
-          args = {'--stdin-filepath', vim.api.nvim_buf_get_name(0)},
-          stdin = true,
-        }
-      end
-    },
-    ruby = {
-      -- rubocop
-      function()
-        return {
-          exe = "rubocop", -- might prepend `bundle exec `
-          args = { '--auto-correct', '--stdin', '%:p', '2>/dev/null', '|', "awk 'f; /^====================$/{f=1}'"},
-          stdin = true,
-          cwd = vim.fn.expand('%:p:h')
-        }
-      end
-    }
-  }
-})
-
 -- Auto-format on write
 vim.api.nvim_exec([[
-augroup FormatAutogroup
+augroup fmt
   autocmd!
-  autocmd BufWritePost *.js,*.jsx,*.rb FormatWrite
+  autocmd BufWritePre * undojoin | Neoformat
 augroup END
 ]], true)
 
