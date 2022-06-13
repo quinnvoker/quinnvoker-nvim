@@ -245,6 +245,25 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 --- Setup gitsigns
 require'gitsigns'.setup()
 
+-- Custom formatters
+vim.api.nvim_exec([[
+let g:neoformat_javascriptreact_prettierlocal = {
+  \ 'exe': './node_modules/.bin/prettier',
+  \ 'args': ['--stdin-filepath', '"%:p"'],
+  \ 'stdin': 1,
+  \ 'try_node_exe': 1,
+  \ }
+
+let g:neoformat_javascript_prettierlocal = {
+  \ 'exe': './node_modules/.bin/prettier',
+  \ 'args': ['--stdin-filepath', '"%:p"'],
+  \ 'stdin': 1,
+  \ 'try_node_exe': 1,
+  \ }
+
+let g:neoformat_enabled_javascriptreact = ['prettierlocal']
+let g:neoformat_enabled_javascript = ['prettierlocal']
+]], true)
 -- Auto-format on write
 vim.api.nvim_exec([[
 augroup fmt
