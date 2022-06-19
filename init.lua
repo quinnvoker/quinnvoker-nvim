@@ -1,4 +1,4 @@
-require 'config'
-require 'plugins'
-require 'hotkeys'
-require 'colors'
+require("config")
+require("plugins")
+require("hotkeys")
+require("colors")

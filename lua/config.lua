@@ -1,4 +1,4 @@
-local vim = require('vim')
+local vim = require("vim")
 local o = vim.o
 local bo = vim.bo
 local wo = vim.wo
@@ -6,7 +6,7 @@ local g = vim.g
 
 --- colors/highlight
 o.termguicolors = true
-o.syntax = 'on'
+o.syntax = "on"
 
 --- automatic indentation
 bo.autoindent = true
@@ -27,4 +27,4 @@ o.ignorecase = true
 o.smartcase = true
 
 -- input
-g.mapleader = ' '
+g.mapleader = " "
