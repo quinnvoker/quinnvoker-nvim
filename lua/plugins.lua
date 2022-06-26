@@ -314,3 +314,17 @@ dap.defaults.fallback.terminal_win_cmd = "20split new"
 vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapStopped", { text = "", texthl = "", linehl = "", numhl = "" })
+
+-- Leap configuration
+vim.api.nvim_create_autocmd("User", {
+	pattern = "LeapEnter",
+	command = "BeaconOff",
+})
+vim.api.nvim_create_autocmd("User", {
+	pattern = "LeapLeave",
+	command = "BeaconOn",
+})
+vim.api.nvim_create_autocmd("User", {
+	pattern = "LeapLeave",
+	command = "Beacon",
+})
