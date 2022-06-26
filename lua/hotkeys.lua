@@ -13,6 +13,9 @@ local expr_opts = {
 -- Window
 qkeymap("", "<C-w>v", "<Esc>:vnew<CR>")
 
+-- Leap
+require("leap").set_default_keymaps()
+
 -- NvimTree
 qkeymap("", "<Leader>n", ":NvimTreeFocus<CR>")
 qkeymap("", "<C-n>", ":NvimTreeToggle<CR>")

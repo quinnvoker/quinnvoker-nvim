@@ -40,6 +40,7 @@ packer.startup(function(use)
 	})
 	-- window navigation
 	use({ "danilamihailov/beacon.nvim" })
+	use({ "ggandor/leap.nvim" })
 	-- project-wide search
 	use({
 		"nvim-telescope/telescope.nvim",
