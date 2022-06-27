@@ -13,9 +13,6 @@ local expr_opts = {
 -- Window
 qkeymap("", "<C-w>v", "<Esc>:vnew<CR>")
 
--- Leap
-require("leap").set_default_keymaps()
-
 -- NvimTree
 qkeymap("", "<Leader>n", ":NvimTreeFocus<CR>")
 qkeymap("", "<C-n>", ":NvimTreeToggle<CR>")
@@ -68,3 +65,8 @@ qkeymap("n", "<leader>d?", ":lua local widgets=require'dap.ui.widgets';widgets.c
 qkeymap("n", "<leader>dk", ":lua require'dap'.up()<CR>zz")
 qkeymap("n", "<leader>dj", ":lua require'dap'.down()<CR>zz")
 qkeymap("n", "<leader>dr", ":lua require'dap'.repl.toggle({}, 'vsplit')<CR><C-w>l")
+
+-- Leap
+require("leap").set_default_keymaps()
+qkeymap("n", "ts", ":lua leap_all_windows()<CR>")
+qkeymap("n", "<leader>s", ":lua leap_bidirectional()<CR>")
