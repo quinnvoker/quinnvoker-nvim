@@ -69,6 +69,14 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  LuaSnip = {
+    config = { "\27LJ\2\nk\0\0\4\0\6\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0005\3\4\0B\0\3\0016\0\0\0'\2\5\0B\0\2\1K\0\1\0\rsnippets\1\2\0\0\nrails\truby\20filetype_extend\fluasnip\frequire\0" },
+    load_after = {},
+    loaded = true,
+    needs_bufread = true,
+    path = "/home/quinn/.local/share/nvim/site/pack/packer/opt/LuaSnip",
+    url = "https://github.com/L3MON4D3/LuaSnip"
+  },
   ["beacon.nvim"] = {
     loaded = true,
     path = "/home/quinn/.local/share/nvim/site/pack/packer/start/beacon.nvim",
@@ -94,21 +102,26 @@ _G.packer_plugins = {
     path = "/home/quinn/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
-  ["cmp-nvim-ultisnips"] = {
-    loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/cmp-nvim-ultisnips",
-    url = "https://github.com/quangnguyen30192/cmp-nvim-ultisnips"
-  },
   ["cmp-path"] = {
     loaded = true,
     path = "/home/quinn/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
+  },
+  cmp_luasnip = {
+    loaded = true,
+    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["feline.nvim"] = {
     config = { "\27LJ\2\ni\0\0\6\0\6\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0006\3\0\0'\5\3\0B\3\2\2=\3\5\2B\0\2\1K\0\1\0\15components\1\0\0\23feline.qatppuccino\nsetup\vfeline\frequire\0" },
     loaded = true,
     path = "/home/quinn/.local/share/nvim/site/pack/packer/start/feline.nvim",
     url = "https://github.com/feline-nvim/feline.nvim"
+  },
+  ["friendly-snippets"] = {
+    loaded = true,
+    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    url = "https://github.com/rafamadriz/friendly-snippets"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
@@ -201,11 +214,6 @@ _G.packer_plugins = {
     path = "/home/quinn/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ultisnips = {
-    loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/ultisnips",
-    url = "https://github.com/sirver/ultisnips"
-  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/quinn/.local/share/nvim/site/pack/packer/start/vim-fugitive",
@@ -215,11 +223,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/quinn/.local/share/nvim/site/pack/packer/start/vim-slim",
     url = "https://github.com/slim-template/vim-slim"
-  },
-  ["vim-snippets"] = {
-    loaded = true,
-    path = "/home/quinn/.local/share/nvim/site/pack/packer/start/vim-snippets",
-    url = "https://github.com/honza/vim-snippets"
   }
 }
 
@@ -232,6 +235,15 @@ time([[Config for nvim-tree.lua]], false)
 time([[Config for feline.nvim]], true)
 try_loadstring("\27LJ\2\ni\0\0\6\0\6\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0006\3\0\0'\5\3\0B\3\2\2=\3\5\2B\0\2\1K\0\1\0\15components\1\0\0\23feline.qatppuccino\nsetup\vfeline\frequire\0", "config", "feline.nvim")
 time([[Config for feline.nvim]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-cmp ]]
+vim.cmd [[ packadd LuaSnip ]]
+
+-- Config for: LuaSnip
+try_loadstring("\27LJ\2\nk\0\0\4\0\6\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0005\3\4\0B\0\3\0016\0\0\0'\2\5\0B\0\2\1K\0\1\0\rsnippets\1\2\0\0\nrails\truby\20filetype_extend\fluasnip\frequire\0", "config", "LuaSnip")
+
+time([[Sequenced loading]], false)
 if should_profile then save_profiles() end
 
 end)

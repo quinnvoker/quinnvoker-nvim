@@ -64,9 +64,16 @@ packer.startup(function(use)
 			{ "hrsh7th/cmp-path" },
 			{ "hrsh7th/cmp-cmdline" },
 			--snippets
-			{ "sirver/ultisnips" },
-			{ "quangnguyen30192/cmp-nvim-ultisnips" },
-			{ "honza/vim-snippets" },
+			{
+				"L3MON4D3/LuaSnip",
+				after = "nvim-cmp",
+				config = function()
+          require("luasnip").filetype_extend("ruby", { "rails" })
+					require("snippets")
+				end,
+			},
+			{ "saadparwaiz1/cmp_luasnip" },
+			{ "rafamadriz/friendly-snippets" },
 		},
 	})
 	-- status bar
@@ -170,6 +177,7 @@ for _, name in pairs(servers) do
 	end
 end
 
+
 -- Setup nvim-cmp.
 local cmp = require("cmp")
 
@@ -177,10 +185,14 @@ cmp.setup({
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
+       local luasnip = require("luasnip")
+            if not luasnip then
+                return
+            end
 			-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-			-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+			luasnip.lsp_expand(args.body) -- For `luasnip` users.
 			-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-			vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+			-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 		end,
 	},
 	mapping = cmp.mapping.preset.insert({
@@ -197,8 +209,8 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		-- { name = 'vsnip' }, -- For vsnip users.
-		-- { name = 'luasnip' }, -- For luasnip users.
-		{ name = "ultisnips" }, -- For ultisnips users.
+		{ name = "luasnip" }, -- For luasnip users.
+		-- { name = "ultisnips" }, -- For ultisnips users.
 		-- { name = 'snippy' }, -- For snippy users.
 	}, {
 		{ name = "buffer" },
