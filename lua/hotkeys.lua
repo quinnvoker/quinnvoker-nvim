@@ -1,3 +1,5 @@
+local vim = require("vim")
+
 -- Hotkey script
 local qkeymap = function(mode, key, result, opts)
 	opts = opts or { noremap = true, silent = true }
@@ -16,7 +18,6 @@ qkeymap("", "<C-w>v", "<Esc>:vnew<CR>")
 -- NvimTree
 qkeymap("", "<Leader>n", ":NvimTreeFocus<CR>")
 qkeymap("", "<C-n>", ":NvimTreeToggle<CR>")
-qkeymap("", "<C-f>", ":NvimTreeFindFile<CR>")
 qkeymap("", "<Leader>r", ":NvimTreeRefresh<CR>")
 
 -- Telescope
