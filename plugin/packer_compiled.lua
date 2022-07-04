@@ -70,7 +70,7 @@ time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   LuaSnip = {
-    config = { "\27LJ\2\nk\0\0\4\0\6\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0005\3\4\0B\0\3\0016\0\0\0'\2\5\0B\0\2\1K\0\1\0\rsnippets\1\2\0\0\nrails\truby\20filetype_extend\fluasnip\frequire\0" },
+    config = { "\27LJ\2\n¥\1\0\0\4\0\b\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0'\2\5\0005\3\6\0B\0\3\0016\0\0\0'\2\a\0B\0\2\1K\0\1\0\rsnippets\1\2\0\0\nrails\truby\20filetype_extend\fluasnip\14lazy_load luasnip.loaders.from_vscode\frequire\0" },
     load_after = {},
     loaded = true,
     needs_bufread = true,
@@ -241,7 +241,7 @@ vim.cmd [[ packadd nvim-cmp ]]
 vim.cmd [[ packadd LuaSnip ]]
 
 -- Config for: LuaSnip
-try_loadstring("\27LJ\2\nk\0\0\4\0\6\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0005\3\4\0B\0\3\0016\0\0\0'\2\5\0B\0\2\1K\0\1\0\rsnippets\1\2\0\0\nrails\truby\20filetype_extend\fluasnip\frequire\0", "config", "LuaSnip")
+try_loadstring("\27LJ\2\n¥\1\0\0\4\0\b\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0'\2\5\0005\3\6\0B\0\3\0016\0\0\0'\2\a\0B\0\2\1K\0\1\0\rsnippets\1\2\0\0\nrails\truby\20filetype_extend\fluasnip\14lazy_load luasnip.loaders.from_vscode\frequire\0", "config", "LuaSnip")
 
 time([[Sequenced loading]], false)
 if should_profile then save_profiles() end
