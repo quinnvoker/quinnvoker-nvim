@@ -68,7 +68,7 @@ packer.startup(function(use)
 				"L3MON4D3/LuaSnip",
 				after = "nvim-cmp",
 				config = function()
-          require("luasnip").filetype_extend("ruby", { "rails" })
+					require("luasnip").filetype_extend("ruby", { "rails" })
 					require("snippets")
 				end,
 			},
@@ -177,7 +177,6 @@ for _, name in pairs(servers) do
 	end
 end
 
-
 -- Setup nvim-cmp.
 local cmp = require("cmp")
 
@@ -185,10 +184,10 @@ cmp.setup({
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
-       local luasnip = require("luasnip")
-            if not luasnip then
-                return
-            end
+			local luasnip = require("luasnip")
+			if not luasnip then
+				return
+			end
 			-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
 			luasnip.lsp_expand(args.body) -- For `luasnip` users.
 			-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
@@ -243,6 +242,7 @@ for _, name in pairs(require("nvim-lsp-installer.servers").get_installed_server_
 		capabilities = capabilities,
 	})
 end
+require("lspconfig").gdscript.setup({})
 
 -- Setup LSP diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
