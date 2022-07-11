@@ -70,7 +70,7 @@ time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   LuaSnip = {
-    config = { "\27LJ\2\nk\0\0\4\0\6\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0005\3\4\0B\0\3\0016\0\0\0'\2\5\0B\0\2\1K\0\1\0\rsnippets\1\2\0\0\nrails\truby\20filetype_extend\fluasnip\frequire\0" },
+    config = { "\27LJ\2\n¥\1\0\0\4\0\b\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0'\2\5\0005\3\6\0B\0\3\0016\0\0\0'\2\a\0B\0\2\1K\0\1\0\rsnippets\1\2\0\0\nrails\truby\20filetype_extend\fluasnip\14lazy_load luasnip.loaders.from_vscode\frequire\0" },
     load_after = {},
     loaded = true,
     needs_bufread = true,
@@ -228,10 +228,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: null-ls.nvim
-time([[Config for null-ls.nvim]], true)
-try_loadstring("\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0", "config", "null-ls.nvim")
-time([[Config for null-ls.nvim]], false)
 -- Config for: feline.nvim
 time([[Config for feline.nvim]], true)
 try_loadstring("\27LJ\2\ni\0\0\6\0\6\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0006\3\0\0'\5\3\0B\3\2\2=\3\5\2B\0\2\1K\0\1\0\15components\1\0\0\23feline.qatppuccino\nsetup\vfeline\frequire\0", "config", "feline.nvim")
@@ -240,13 +236,17 @@ time([[Config for feline.nvim]], false)
 time([[Config for nvim-tree.lua]], true)
 try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
 time([[Config for nvim-tree.lua]], false)
+-- Config for: null-ls.nvim
+time([[Config for null-ls.nvim]], true)
+try_loadstring("\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0", "config", "null-ls.nvim")
+time([[Config for null-ls.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-cmp ]]
 vim.cmd [[ packadd LuaSnip ]]
 
 -- Config for: LuaSnip
-try_loadstring("\27LJ\2\nk\0\0\4\0\6\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0005\3\4\0B\0\3\0016\0\0\0'\2\5\0B\0\2\1K\0\1\0\rsnippets\1\2\0\0\nrails\truby\20filetype_extend\fluasnip\frequire\0", "config", "LuaSnip")
+try_loadstring("\27LJ\2\n¥\1\0\0\4\0\b\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0'\2\5\0005\3\6\0B\0\3\0016\0\0\0'\2\a\0B\0\2\1K\0\1\0\rsnippets\1\2\0\0\nrails\truby\20filetype_extend\fluasnip\14lazy_load luasnip.loaders.from_vscode\frequire\0", "config", "LuaSnip")
 
 time([[Sequenced loading]], false)
 if should_profile then save_profiles() end

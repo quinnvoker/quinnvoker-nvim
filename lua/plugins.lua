@@ -67,7 +67,8 @@ packer.startup(function(use)
 				"L3MON4D3/LuaSnip",
 				after = "nvim-cmp",
 				config = function()
-					require("luasnip").filetype_extend("ruby", { "rails" })
+          require("luasnip.loaders.from_vscode").lazy_load()
+          require("luasnip").filetype_extend("ruby", { "rails" })
 					require("snippets")
 				end,
 			},
