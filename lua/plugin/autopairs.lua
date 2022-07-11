@@ -1,7 +1,7 @@
+require("qutil")
 local npairs = require("nvim-autopairs")
 local Rule = require("nvim-autopairs.rule")
 local ts_conds = require("nvim-autopairs.ts-conds")
-_G.MUtils = {}
 
 npairs.setup({
 	check_ts = true,
@@ -17,6 +17,6 @@ npairs.add_rules({
 	Rule("$", "$", "lua"):with_pair(ts_conds.is_not_ts_node({ "function" })),
 })
 
-MUtils.completion_confirm = function()
+QUtil.completion_confirm = function()
 	return npairs.autopairs_cr()
 end

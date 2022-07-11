@@ -107,6 +107,9 @@ packer.startup(function(use)
 	use("mfussenegger/nvim-dap")
 end)
 
+-- load up custom utils
+require("qutil")
+
 -- autopair config
 require("plugin/autopairs")
 

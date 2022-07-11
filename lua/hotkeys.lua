@@ -27,7 +27,7 @@ qkeymap("", "<Leader>fb", ":Telescope buffers<CR>")
 qkeymap("", "<Leader>fh", ":Telescope help_tags<CR>")
 
 -- cmp + autopairs
-qkeymap("i", "<CR>", "v:lua.MUtils.completion_confirm()", expr_opts)
+qkeymap("i", "<CR>", "v:lua.QUtil.completion_confirm()", expr_opts)
 
 -- LSP
 qkeymap("n", "gd", ":lua vim.lsp.buf.definition()<CR>")
