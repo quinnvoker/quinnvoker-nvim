@@ -80,7 +80,7 @@ packer.startup(function(use)
 		"feline-nvim/feline.nvim",
 		config = function()
 			require("feline").setup({
-				components = require("feline.qatppuccino"),
+				components = require("plugin.feline.qatppuccino"),
 			})
 			require("feline").winbar.setup()
 		end,
