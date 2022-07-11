@@ -82,6 +82,7 @@ packer.startup(function(use)
 			require("feline").setup({
 				components = require("feline.qatppuccino"),
 			})
+			require("feline").winbar.setup()
 		end,
 	})
 	-- notifications
