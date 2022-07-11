@@ -43,7 +43,7 @@ qkeymap("n", "<Leader>af", ":lua vim.lsp.buf.code_action()<CR>")
 qkeymap("n", "<Leader>rn", ":lua vim.lsp.buf.rename()<CR>")
 
 --- Formatter
-qkeymap("n", "<Leader>FF", ":Format<CR>")
+qkeymap("n", "<Leader>FF", ":lua LspFormat()<CR>")
 
 --- Terminal
 qkeymap("t", "<Esc>", "<C-\\><C-n>")
@@ -69,5 +69,5 @@ qkeymap("n", "<leader>dr", ":lua require'dap'.repl.toggle({}, 'vsplit')<CR><C-w>
 
 -- Leap
 require("leap").set_default_keymaps()
-qkeymap("n", "ts", ":lua leap_all_windows()<CR>")
-qkeymap("n", "<leader>s", ":lua leap_bidirectional()<CR>")
+qkeymap("n", "ts", ":lua LeapAllWindows()<CR>")
+qkeymap("n", "<leader>s", ":lua LeapBidirectional()<CR>")

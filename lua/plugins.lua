@@ -10,7 +10,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path })
 	execute("packadd packer.nvim")
 end
-
 -- start packer
 vim.cmd("packadd packer.nvim")
 local packer = require("packer")
@@ -96,7 +95,11 @@ packer.startup(function(use)
 		requires = { "nvim-lua/plenary.nvim" },
 	})
 	-- autoformatting and code stylers
-	use("sbdchd/neoformat")
+	use({
+		"jose-elias-alvarez/null-ls.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+		config = function() end,
+	})
 	use("windwp/nvim-autopairs")
 	use("windwp/nvim-ts-autotag")
 	-- debug
@@ -161,6 +164,7 @@ local servers = {
 	"clangd",
 	"html",
 	"jsonls",
+	"solargraph",
 	"tsserver",
 	"sumneko_lua",
 	"pyright",
@@ -255,20 +259,55 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 --- Setup gitsigns
 require("gitsigns").setup()
 
--- Neoformat config (vimscript only)
-vim.api.nvim_exec(
-	[[
-" Allow neoformat to find prettier in node modules
-let g:neoformat_try_node_exe = 1
-
-" Auto-correct on save
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
-augroup END
-]],
-	true
-)
+-- Setup null-ls
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local null_ls = require("null-ls")
+LspFormat = function(bufnr)
+	vim.lsp.buf.format({
+		filter = function(client)
+			-- currently disabling any that i have null-ls formatters installed for
+			local allowed = {
+				["null-ls"] = true,
+				bash = false,
+				css = false,
+				clangd = false,
+				html = false,
+				jsonls = false,
+				pyright = true,
+				solargraph = false,
+				sumneko_lua = false,
+				tsserver = false,
+				yamlls = false,
+			}
+			return (allowed[client.name] == nil or allowed[client.name])
+		end,
+		bufnr = bufnr,
+		async = false,
+	})
+end
+null_ls.setup({
+	sources = {
+		null_ls.builtins.completion.luasnip,
+		null_ls.builtins.diagnostics.rubocop,
+		null_ls.builtins.formatting.rubocop,
+		null_ls.builtins.formatting.prettier,
+		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.formatting.clang_format,
+		null_ls.builtins.formatting.beautysh,
+	},
+	on_attach = function(client, bufnr)
+		if client.supports_method("textDocument/formatting") then
+			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				group = augroup,
+				buffer = bufnr,
+				callback = function()
+					LspFormat(bufnr)
+				end,
+			})
+		end
+	end,
+})
 
 -- override default notifications
 vim.notify = require("notify")
@@ -341,16 +380,17 @@ vim.api.nvim_create_autocmd("User", {
 	command = "Beacon",
 })
 -- Searching in all windows (including the current one) on the tab page:
-function leap_all_windows()
+LeapAllWindows = function()
 	require("leap").leap({
 		["target-windows"] = vim.tbl_filter(function(win)
 			return vim.api.nvim_win_get_config(win).focusable
 		end, vim.api.nvim_tabpage_list_wins(0)),
 	})
 end
+
 -- Bidirectional search in the current window is just a specific case of the
 -- multi-window mode - set `target-windows` to a table containing the current
 -- window as the only element:
-function leap_bidirectional()
+LeapBidirectional = function()
 	require("leap").leap({ ["target-windows"] = { vim.api.nvim_get_current_win() } })
 end
