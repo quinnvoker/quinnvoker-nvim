@@ -69,5 +69,5 @@ qkeymap("n", "<leader>dr", ":lua require'dap'.repl.toggle({}, 'vsplit')<CR><C-w>
 
 -- Leap
 require("leap").set_default_keymaps()
-qkeymap("n", "ts", ":lua LeapAllWindows()<CR>")
-qkeymap("n", "<leader>s", ":lua LeapBidirectional()<CR>")
+qkeymap("n", "ts", ":lua QUtil.leap_all_windows()<CR>")
+qkeymap("n", "<leader>s", ":lua QUtil.leap_bidirectional()<CR>")
